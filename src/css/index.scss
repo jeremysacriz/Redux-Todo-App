@@ -11,7 +11,97 @@ body {
    font-size: 12px;
 }
 
-#redux {
+#todo {
     height: 100vh;
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: skyblue;
+    padding: 50px 0;
+
+    .todo-form {
+      height: 50px;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      #todo-input {
+         height: 100%;
+         width: 100%;
+         position: relative;
+         padding: 0 20px;
+         display: flex;
+         justify-content: space-between;
+
+         &:focus {
+            outline: none;
+            border: 2px solid black;
+         }
+      }
+
+      .add-icon {
+         position: absolute;
+         right: 20px;
+         border: none;
+         outline: none;
+         background-color: transparent;
+         cursor: pointer;
+         transition: 0.2s ease;
+
+         &:hover {
+            color: skyblue;
+         }
+
+         span {
+            font-size: 1.6rem;
+         }
+      }
+   }
+
+   .todo-list {
+      height: 100%;
+      width: 50%;
+      margin: 20px;
+
+      .todo {
+         height: 50px;
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         border: 2px solid black;
+         padding: 0 20px;
+         margin: 10px 0;
+
+         .todo-title {
+            display: flex;
+            align-items: center;
+
+            .todo-num {
+               margin-right: 15px;
+            }
+
+            h1 {
+               font-size: 1rem;
+               letter-spacing: 2px;
+            }
+         }
+
+         .todo-icons {
+            button {
+               border: none;
+               outline: none;
+               background-color: transparent;
+               cursor: pointer;
+               transition: 0.2s ease;
+
+               &:not(:last-child) {
+                  margin-right: 10px;
+               }
+            }
+         }
+      }
+   }
 }

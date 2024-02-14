@@ -1,0 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = []
+
+const todoReducers = createSlice({
+    name: 'todo',
+    initialState,
+    reducers: {
+        submit: (state, action) => {
+            state.push(action.payload)
+        },
+        remove: (state, action) => {
+            const newState = state.filter(item => item.id !== action.payload)
+
+            return newState
+        }
+    }
+})
+
+const { actions, reducer } = todoReducers
+export const { submit, remove } = actions
+export default reducer
