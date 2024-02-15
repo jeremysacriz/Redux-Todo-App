@@ -4,7 +4,7 @@ import { App } from './App.jsx'
 import './css/index.css'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import todoReducer from './reducers/reducers.js';
+import todoReducer from './slice/slice.js';
 
 const store = configureStore({
   reducer: {

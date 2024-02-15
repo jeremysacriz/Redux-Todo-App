@@ -9,6 +9,21 @@ const todoReducers = createSlice({
         submit: (state, action) => {
             state.push(action.payload)
         },
+        edit: (state, action) => {
+            const editState = state.map(item => {
+                if (item.id === action.payload.id) {
+                    return {
+                        ...item,
+                        id: action.payload.id,
+                        todo: action.payload.todo
+                    }
+                }
+
+                return item
+            })
+
+            return editState
+        },
         remove: (state, action) => {
             const newState = state.filter(item => item.id !== action.payload)
 
@@ -18,5 +33,5 @@ const todoReducers = createSlice({
 })
 
 const { actions, reducer } = todoReducers
-export const { submit, remove } = actions
+export const { submit, remove, edit } = actions
 export default reducer
