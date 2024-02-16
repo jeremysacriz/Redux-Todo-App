@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"); /* Google Icons */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan&display=swap"); /* Font-Family: 'League Spartan' */
 * {
   margin: 0;
   padding: 0;
@@ -59,10 +60,18 @@ body {
 #todo .todo-form .add-icon span {
   font-size: 1.6rem;
 }
+#todo .todo-form .error-msg {
+  position: absolute;
+  top: 55px;
+  left: 20px;
+  color: red;
+  font-size: 1rem;
+  letter-spacing: 4px;
+}
 #todo .todo-list {
   height: 100%;
   width: 50%;
-  margin-top: 10px;
+  margin-top: 25px;
   overflow-y: scroll;
 }
 #todo .todo-list .todo-completed {

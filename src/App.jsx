@@ -7,6 +7,7 @@ export const App = () => {
    const [input, setInput] = useState("")
    const [boolean, setBoolean] = useState(false)
    const [todoId, setTodoId] = useState()
+   const [formValid, setFormValid] = useState(false)
    const todos = useSelector(state => state.todo)
 
    const dispatch = useDispatch()
@@ -14,21 +15,25 @@ export const App = () => {
    const handleSubmit = (e) => {
       e.preventDefault()
 
-      if (boolean === true) {
-         dispatch(edit({
-            id: todoId,
-            todo: input
-         }))
+      if (input.length < 2) {
+         setFormValid("Input field must not be empty.")
       } else {
-         dispatch(submit({
-            id: todos.length,
-            todo: input,
-         }))
+         if (boolean === true) {
+            dispatch(edit({
+               id: todoId,
+               todo: input
+            }))
+         } else {
+            dispatch(submit({
+               id: todos.length,
+               todo: input,
+            }))
+         }
+   
+         setInput("")
+         setBoolean(false)
+         setFormValid("")
       }
-
-      setInput("")
-      setBoolean(false)
-      // refs.current['todo'].blur()
    }
 
    const handleEdit = (item) => {
@@ -36,10 +41,12 @@ export const App = () => {
       setInput(item.todo)
       setBoolean(true)
       setTodoId(item.id)
+      setFormValid("")
    }
 
    const handleDelete = (item) => {
       dispatch(remove(item.id))
+      setFormValid("")
    }
 
    return (
@@ -52,6 +59,7 @@ export const App = () => {
             <button className="add-icon" onClick={handleSubmit}>
                <span className="material-symbols-outlined">add_circle</span>
             </button>
+            <h1 className="error-msg">{formValid}</h1>
          </form>
          <div className="todo-list">
             {
