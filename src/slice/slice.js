@@ -28,10 +28,25 @@ const todoReducers = createSlice({
             const newState = state.filter(item => item.id !== action.payload)
 
             return newState
+        },
+        complete: (state, action) => {
+            const completeState = state.map(item => {
+                if (item.id === action.payload.id) {
+                    return {
+                        ...item,
+                        id: action.payload.id,
+                        complete: action.payload.complete
+                    }
+                }
+
+                return item
+            })
+
+            return completeState
         }
     }
 })
 
 const { actions, reducer } = todoReducers
-export const { submit, remove, edit } = actions
+export const { complete, submit, remove, edit } = actions
 export default reducer
