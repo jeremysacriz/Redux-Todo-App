@@ -9,7 +9,8 @@ export const App = () => {
    const [ todoId, setTodoId ] = useState()
    const [ formValid, setFormValid ] = useState(false)
    const todos = useSelector(state => state.todo)
-   console.log(todos)
+
+   console.log(todos) // checks todo status
 
    const dispatch = useDispatch()
 
